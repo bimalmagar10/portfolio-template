@@ -52,7 +52,7 @@ function Button({
       data-slot="button"
       className={cn(
         buttonVariants({ variant, size, className }),
-        "border border-transparent hover:border-gray-300/90 dark:hover:border-gray-600/50 transition-colors duration-200"
+        " border border-transparent hover:border-gray-300/90 dark:hover:border-gray-600/50 transition-colors duration-200"
       )}
       {...props}
     />

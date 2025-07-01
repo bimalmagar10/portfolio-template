@@ -1,4 +1,105 @@
 import type { MDXComponents } from "mdx/types";
+import Image from "next/image";
+
+// Export components for server-side use (non-hook)
+export function getMDXComponents(): MDXComponents {
+  return {
+    h1: ({ children }) => (
+      <h1 className="text-3xl font-bold tracking-tight text-foreground mb-6 mt-8 first:mt-0">
+        {children}
+      </h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="text-2xl font-semibold tracking-tight text-foreground mb-4 mt-8 border-b border-gray-200 dark:border-gray-800 pb-2">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-xl font-semibold tracking-tight text-foreground mb-3 mt-6">
+        {children}
+      </h3>
+    ),
+    h4: ({ children }) => (
+      <h4 className="text-lg font-semibold tracking-tight text-foreground mb-2 mt-4">
+        {children}
+      </h4>
+    ),
+    p: ({ children }) => (
+      <p className="text-base text-muted-foreground leading-7 mb-4">
+        {children}
+      </p>
+    ),
+    ul: ({ children }) => (
+      <ul className="list-disc list-inside mb-4 space-y-1 text-muted-foreground">
+        {children}
+      </ul>
+    ),
+    ol: ({ children }) => (
+      <ol className="list-decimal list-inside mb-4 space-y-1 text-muted-foreground">
+        {children}
+      </ol>
+    ),
+    li: ({ children }) => <li className="text-muted-foreground">{children}</li>,
+    blockquote: ({ children }) => (
+      <blockquote className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 italic my-4 text-muted-foreground bg-blue-50 dark:bg-blue-950/30 py-2 rounded-r">
+        {children}
+      </blockquote>
+    ),
+    code: ({ children }) => (
+      <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-foreground">
+        {children}
+      </code>
+    ),
+    pre: ({ children }) => (
+      <pre className="bg-muted p-4 rounded-lg overflow-x-auto my-4 text-sm">
+        {children}
+      </pre>
+    ),
+    a: ({ href, children }) => (
+      <a
+        href={href}
+        className="text-primary hover:text-primary/80 underline underline-offset-4"
+        target={href?.startsWith("http") ? "_blank" : undefined}
+        rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+      >
+        {children}
+      </a>
+    ),
+    strong: ({ children }) => (
+      <strong className="font-semibold text-foreground">{children}</strong>
+    ),
+    em: ({ children }) => (
+      <em className="italic text-muted-foreground">{children}</em>
+    ),
+    hr: () => <hr className="my-8 border-t border-border" />,
+    table: ({ children }) => (
+      <div className="overflow-x-auto my-4">
+        <table className="min-w-full border border-border rounded-lg">
+          {children}
+        </table>
+      </div>
+    ),
+    th: ({ children }) => (
+      <th className="border border-border px-4 py-2 bg-muted font-semibold text-left">
+        {children}
+      </th>
+    ),
+    td: ({ children }) => (
+      <td className="border border-border px-4 py-2">{children}</td>
+    ),
+    img: ({ src, alt }) => (
+      <div className="my-4 mx-auto max-w-full">
+        <Image
+          src={src || ""}
+          alt={alt || ""}
+          width={800}
+          height={600}
+          className="max-w-full h-auto rounded-lg mx-auto"
+        />
+      </div>
+    ),
+  };
+}
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { generateUUID } from "./utils";
+import { parseLocalDate } from "./utils";
 
 export interface BlogPost {
   id: string;
@@ -57,7 +57,6 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         (fileName) => fileName.endsWith(".md") || fileName.endsWith(".mdx")
       )
       .map(async (fileName) => {
-        const slug = fileName.replace(/\.(md|mdx)$/, "");
         const fullPath = path.join(postsDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data, content } = matter(fileContents);
@@ -80,7 +79,8 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     const allPostsData = await Promise.all(allPostsPromises);
 
     return allPostsData.sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      (a, b) =>
+        parseLocalDate(b.date).getTime() - parseLocalDate(a.date).getTime()
     );
   } catch (error) {
     console.error("Error reading posts:", error);

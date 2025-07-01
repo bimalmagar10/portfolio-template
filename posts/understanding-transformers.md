@@ -1,6 +1,6 @@
 ---
 title: "Understanding Transformers in Deep Learning"
-date: "2024-01-15"
+date: "2025-01-15"
 slug: "understanding-transformers"
 tags: ["Deep Learning", "NLP", "Transformers"]
 ---

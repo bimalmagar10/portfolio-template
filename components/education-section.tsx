@@ -30,7 +30,7 @@ const EducationSection = () => {
         {education.map((edu, index) => (
           <Card
             key={index}
-            className="hover:bg-muted/50 transition-colors py-1"
+            className="hover:bg-muted/50 dark:hover:border-gray-600 transition-colors py-1"
           >
             <CardContent className="p-4">
               <div className="flex items-start gap-3">

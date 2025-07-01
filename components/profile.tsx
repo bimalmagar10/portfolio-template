@@ -12,9 +12,9 @@ const Profile = () => {
           synthesis.
         </p>
         <p>
-          When I'm not diving deep into research papers, I enjoy experimenting
-          with new ML frameworks, contributing to open-source projects, and
-          sharing knowledge through technical writing.
+          When I&apos;m not diving deep into research papers, I enjoy
+          experimenting with new ML frameworks, contributing to open-source
+          projects, and sharing knowledge through technical writing.
         </p>
         <p>Latest research portfolio available upon request.</p>
       </div>
